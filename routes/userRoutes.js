@@ -7,6 +7,11 @@ const userSchema = require('../apiSchema/userSchema')
 router.post('/signup', 
     joinSchemaValidation.validateBody(userSchema.signup),
     userController.signup
-)
+);
+
+router.post('/login',
+    joinSchemaValidation.validateBody(userSchema.login),
+    userController.login
+);
 
 module.exports = router;

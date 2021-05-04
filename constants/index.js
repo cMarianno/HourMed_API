@@ -13,10 +13,14 @@ module.exports = {
     },
     requestValidationMessage:{
         BAD_REQUEST: 'Invalid fields',
-        INVALID_ID: 'Invalid ID'
+        INVALID_ID: 'Invalid ID',
+        TOKEN_MISSING: 'Token missing from header'
     },
     userMessage: {
         SIGNUP_SUCCESS: 'Signup Sucess',
-        DUPLICATE_EMAIL: 'User already exist with giver email'
+        DUPLICATE_EMAIL: 'User already exist with giver email',
+        LOGIN_SUCCESS: 'Login Success',
+        USER_NOT_FOUND: 'User Not Found',
+        INVALID_PASSWORD: 'Invalid Password'
     }
 }
