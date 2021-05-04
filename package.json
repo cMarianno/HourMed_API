@@ -1,26 +1,20 @@
 {
-  "name": "HourMed_API",
+  "name": "node-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node node_modules/nodemon/bin/nodemon bin/server"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cMarianno/HourMed_API.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cMarianno/HourMed_API/issues"
-  },
-  "homepage": "https://github.com/cMarianno/HourMed_API#readme",
   "dependencies": {
-    "debug": "^4.3.1",
-    "express": "^4.17.1"
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
