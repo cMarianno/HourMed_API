@@ -21,6 +21,9 @@ module.exports = {
         DUPLICATE_EMAIL: 'User already exist with giver email',
         LOGIN_SUCCESS: 'Login Success',
         USER_NOT_FOUND: 'User Not Found',
-        INVALID_PASSWORD: 'Invalid Password'
+        INVALID_PASSWORD: 'Invalid Password',
+        INVALID_TYPE: 'Invalid Type',
+        INVALID_NAME: 'Invalid Name',
+        GETALL_SUCCESS: 'Get All Users Success',
     }
 }
