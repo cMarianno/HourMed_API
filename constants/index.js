@@ -25,5 +25,8 @@ module.exports = {
         INVALID_TYPE: 'Invalid Type',
         INVALID_NAME: 'Invalid Name',
         GETALL_SUCCESS: 'Get All Users Success',
+    },
+    medicineMessage: {
+        ADD_SUCCESS: 'Medicine Added',
     }
 }

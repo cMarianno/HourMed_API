@@ -69,6 +69,3 @@ module.exports.deleteProduct = async ({id}) => {
         throw new Error(error);
     }
 }
-        // name: serviceData.name,
-        // price: serviceData.price,
-        // brand: serviceData.brand
