@@ -14,4 +14,9 @@ router.post('/login',
     userController.login
 );
 
+router.post('/getAll',
+    joinSchemaValidation.validateBody(userSchema.getAllLowUsers),
+    userController.getAllLowUsers
+);
+
 module.exports = router;
