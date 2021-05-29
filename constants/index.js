@@ -28,5 +28,6 @@ module.exports = {
     },
     medicineMessage: {
         ADD_SUCCESS: 'Medicine Added',
+        DELETE_SUCCESS: 'Medicine Deleted Successfully'
     }
 }

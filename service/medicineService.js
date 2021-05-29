@@ -13,3 +13,17 @@ module.exports.addMedicine = async (serviceData) => {
         throw new Error(error);
     }
 }
+
+module.exports.deleteMedicine = async ({id}) => {
+    try{
+       checkObjectId(id);
+       let medicine = await MEdicine.findByIdAndDelete(id);
+       if (!medicine){
+           throw new Error(constants.medicineMessage.DELETE_SUCCESS);
+       }
+       return formatMongoData(medicine);
+    } catch (error) {
+        console.log('Something went wrong: Service: deleteMedicine', error);
+        throw new Error(error);
+    }
+}

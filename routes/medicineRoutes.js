@@ -10,4 +10,8 @@ router.post('/addMedicine',
     medicineController.addMedicine
 );
 
+router.delete('/:deleteMedicine',
+    medicineController.deleteMedicine
+);
+
 module.exports = router;
