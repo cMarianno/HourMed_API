@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const { formatMongoData } = require('../helper/dbHelper');
 const jwt = require('jsonwebtoken');
 
-module.exports.signup = async ({type, name, email, password}) =>{
+module.exports.signup = async ({type, name, email, password, lowID}) =>{
     try{
         if(name == "")
             throw new Error(constants.userMessage.INVALID_NAME)
@@ -19,7 +19,7 @@ module.exports.signup = async ({type, name, email, password}) =>{
 
         password = await bcrypt.hash(password, 12);
 
-        const newUser = new User({email, password, type});
+        const newUser = new User({email, password, type, lowID});
 
         let result = await newUser.save();
 
@@ -44,8 +44,8 @@ module.exports.login = async ({email, password}) =>{
         }
 
         const token = jwt.sign({id: user._id}, process.env.SECRET_KEY || 'my-secret-key', {expiresIn: '1d'});
-
-        return {token};
+        
+        return {token, type: user.type, id: user._id};
 
     } catch (error) {
         console.log('Something went wrong: Service: login', error);
@@ -57,6 +57,40 @@ module.exports.getAllLowUsers = async ({skip=0, limit=10}) => {
     try{
         var query = { type: "low" };
         let users = await User.find(query).skip(parseInt(skip)).limit(parseInt(limit));
+        return formatMongoData(users);
+    } catch (error) {
+        console.log('Something went wrong: Service: getAllLowUsers, error');
+        throw new Error(error);
+    }
+}
+
+module.exports.getUsersByEmail = async ({email}) => {
+    try{
+        var query = { email: email };
+        let users = await User.find(query);
+        return formatMongoData(users);
+    } catch (error) {
+        console.log('Something went wrong: Service: getUsersByEmail, error');
+        throw new Error(error);
+    }
+}
+
+module.exports.getAllLowUsers = async ({skip=0, limit=10}) => {
+    try{
+        var query = { type: "low" };
+        let users = await User.find(query).skip(parseInt(skip)).limit(parseInt(limit));
+        return formatMongoData(users);
+    } catch (error) {
+        console.log('Something went wrong: Service: getAllLowUsers, error');
+        throw new Error(error);
+    }
+}
+
+module.exports.putLowIdOnHighUser = async ({email, lowID}) => {
+    try{
+        var query = { email: email };
+        var newvalues = { lowID: lowID };
+        let users = await User.updateOne(query, newvalues)
         return formatMongoData(users);
     } catch (error) {
         console.log('Something went wrong: Service: getAllLowUsers, error');

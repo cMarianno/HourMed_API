@@ -19,4 +19,16 @@ router.post('/getAll',
     userController.getAllLowUsers
 );
 
+router.post('/getUsersByEmail',
+    joinSchemaValidation.validateBody(userSchema.getUsersByEmail),
+    userController.getUsersByEmail
+);
+
+
+router.post('/putLowId',
+    joinSchemaValidation.validateBody(userSchema.putLowIdOnHighUser),
+    userController.putLowIdOnHighUser
+);
+
+
 module.exports = router;

@@ -7,3 +7,7 @@ module.exports.addMedicine = Joi.object().keys({
     interval: Joi.string().required(),
     low_id: Joi.string().required()
 });
+
+module.exports.getMedicineByID = Joi.object().keys({
+    low_id: Joi.string().required()
+});

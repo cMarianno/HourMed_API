@@ -42,3 +42,31 @@ module.exports.getAllLowUsers = async (req, res) => {
     }
     return res.status(response.status).send(response);
 }
+
+module.exports.getUsersByEmail = async (req, res) => {
+    let response = {...constants.defaultServerResponse};
+    try {
+        const responseFromService = await userService.getUsersByEmail(req.body);
+        response.status = 200;
+        response.message = constants.userMessage.GETALL_SUCCESS;
+        response.body = responseFromService;
+} catch (error) {
+        console.log('Something went wrong: Controller: getUsersByEmail', error);
+        response.message = error.message;
+    }
+    return res.status(response.status).send(response);
+}
+
+module.exports.putLowIdOnHighUser = async (req, res) => {
+    let response = {...constants.defaultServerResponse};
+    try {
+        const responseFromService = await userService.putLowIdOnHighUser(req.body);
+        response.status = 200;
+        response.message = constants.userMessage.GETALL_SUCCESS;
+        response.body = responseFromService;
+} catch (error) {
+        console.log('Something went wrong: Controller: putLowIdOnHighUser', error);
+        response.message = error.message;
+    }
+    return res.status(response.status).send(response);
+}

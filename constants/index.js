@@ -28,6 +28,7 @@ module.exports = {
     },
     medicineMessage: {
         ADD_SUCCESS: 'Medicine Added',
+        SEARCH_SUCCESS: 'Medicine Search',
         DELETE_SUCCESS: 'Medicine Deleted Successfully'
     }
 }
