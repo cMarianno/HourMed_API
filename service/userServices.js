@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports.signup = async ({type, name, email, password, lowID}) =>{
     try{
+        console.log(name)
         if(name == "")
             throw new Error(constants.userMessage.INVALID_NAME)
 
@@ -45,7 +46,7 @@ module.exports.login = async ({email, password}) =>{
 
         const token = jwt.sign({id: user._id}, process.env.SECRET_KEY || 'my-secret-key', {expiresIn: '1d'});
         
-        return {token, type: user.type, id: user._id};
+        return {token, type: user.type, id: user._id, low_id: user.lowID};
 
     } catch (error) {
         console.log('Something went wrong: Service: login', error);
@@ -67,7 +68,7 @@ module.exports.getAllLowUsers = async ({skip=0, limit=10}) => {
 module.exports.getUsersByEmail = async ({email}) => {
     try{
         var query = { email: email };
-        let users = await User.find(query);
+        let users = await User.findOne(query);
         return formatMongoData(users);
     } catch (error) {
         console.log('Something went wrong: Service: getUsersByEmail, error');

@@ -5,7 +5,8 @@ const medicineSchema = new mongoose.Schema({
     date_to: String,
     date_from: String,
     interval: String,
-    low_id: String
+    low_id: String,
+    qtde: Number
 }, {
     timestamps: true,
     versionKey: false

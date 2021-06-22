@@ -18,6 +18,7 @@ module.exports.signup = async (req, res) => {
 module.exports.login = async (req, res) => {
     let response = {...constants.defaultServerResponse};
     try {
+        console.log(req.body)
         const responseFromService = await userService.login(req.body);
         response.status = 200;
         response.message = constants.userMessage.LOGIN_SUCCESS;

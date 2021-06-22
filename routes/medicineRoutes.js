@@ -19,4 +19,14 @@ router.delete('/:deleteMedicine',
     medicineController.deleteMedicine
 );
 
+router.post('/tapMedicine', 
+    joinSchemaValidation.validateBody(medicineSchema.tapMedicine), 
+    medicineController.tapMedicine
+);
+
+router.post('/getQtdeByName', 
+    joinSchemaValidation.validateBody(medicineSchema.getQtdeByName), 
+    medicineController.getQtdeByName
+);
+
 module.exports = router;
